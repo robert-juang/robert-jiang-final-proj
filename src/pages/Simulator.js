@@ -12,12 +12,23 @@ const Simulator = () => {
 
       <div class = "overview" id = "1">
         <div class = "layout">
-          <h1>Overview</h1>
-          <div class = "row"> 
-              <p>Account value: 10,000</p>
-              <p>Percentage Change: 1% </p>  
-              <p>Today's Change: +0.00%</p>
+          <div class = "personal"> 
+            <h1>Overview</h1>
+            <div class = "row"> 
+                <p>Today's Date: 04/12/2021</p>
+                <p>Account value: 10,000</p>
+                <p>Percentage Change: 1% </p>  
+                <p>Today's Change: +0.00%</p>
+                <p>Today's Weather: +0.00%</p>
+            </div>
           </div>
+          <div class = "performance">
+            <h1> Performance</h1>
+            <div class = "row" id = "1">
+                <Charts/>
+            </div>
+          </div>
+        </div>
 
       <div class = "overview">
         <h1> Holdings </h1>
@@ -34,16 +45,9 @@ const Simulator = () => {
         </div>
       </div>
     </div>
-
-        <div class = "layout"> 
-          <h1> Performance/Charts</h1>
-          <div class = "row" id = "1">
-              <Charts/>
-          </div>
-        </div>
     
-        </div>
-      </div>
+  </div>
+
 
   );
 };

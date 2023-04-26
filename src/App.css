@@ -76,6 +76,7 @@ p{
 .overview{
   display: flex;
   flex-direction: column; 
+
 }
 
 h1{
@@ -84,9 +85,10 @@ h1{
 }
 
 .layout{
-  display:flex;
-  flex-direction: column;
-  margin-left:5em; 
+  display: flex;
+  flex-direction: row;
+  margin-left: 5em;
+  
 }
 
 h2{
@@ -159,3 +161,10 @@ h3{
   border: 1px solid grey;
 }
 
+.personal{
+  margin-right:4em;
+}
+
+.performance{
+  margin-right:2em;
+}
