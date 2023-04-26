@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
-import slug from 'mongoose-slug-updater';
+const mongoose = require('mongoose'); 
+
+// import slug from 'mongoose-slug-updater';
 
 
 //our site will require authentication 
@@ -22,13 +23,13 @@ import slug from 'mongoose-slug-updater';
 //------------------------------------------------------------------------------------
 
 try {
-    await mongoose.connect('mongodb://localhost/stockData', {useNewUrlParser: true});
+    mongoose.connect('mongodb://localhost/stockData', {useNewUrlParser: true});
     console.log('Successfully connected to database.');
   } catch (err) {
     console.log('ERROR: ', err);
   }
   
-  mongoose.plugin(slug);
+  // mongoose.plugin(slug);
   
   
 //   const ArticleSchema = new mongoose.Schema({
@@ -67,7 +68,6 @@ const UserStockSchema = new mongoose.Schema({
   const UserSchema = new mongoose.Schema({
     username: {type: String, required: true, minLength: 3, maxLength: 20},
     password: {type: String, required: true, minLength: 8},
-    email: {type: String, required: true},
     AcctVal: {type: Number, required: true,},
     stocksTraded: [UserStockSchema],
   });

@@ -1,11 +1,12 @@
-import express from 'express'
-import './db.mjs';
-import mongoose from 'mongoose';
-import Alpaca from "@alpacahq/alpaca-trade-api";
-import * as dotenv from 'dotenv'; 
+
+const db = require('./db');
+// import mongoose from ')mongoose';
+const Alpaca = require("@alpacahq/alpaca-trade-api");
+const dotenv = require('dotenv'); 
+// import * as dotenv from 'dotenv'; 
 
 
-async function getStockData(ticker,startDate,endDate){
+module.exports = async function getStockData(ticker,startDate,endDate){
     const API_KEY = process.env.ALPACA_KEY;
     const API_SECRET = process.env.ALPACA_SECRET;
 
@@ -31,7 +32,7 @@ async function getStockData(ticker,startDate,endDate){
     return got; 
 }
 
-function checkValid(ticker){
+module.exports = function checkValid(ticker){
     // TODO: Fix the error here (OK NVM I'm just dumb use this as a cache to cache data maybe?)
 
     // const response = fetch('./nyse-listed_json.json');
@@ -57,7 +58,3 @@ function checkValid(ticker){
     // Convert ticker to uppercase
 }
 
-export{
-    getStockData, 
-    checkValid
-}; 
