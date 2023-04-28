@@ -16,7 +16,7 @@ const localStrategy = require( "passport-local");
 const app = express(); 
 
 const corsOptions ={
-  origin:'https://robert-jiang-final-proj-dstyn88xb-robert-juang.vercel.app/', 
+  origin:'https://robert-jiang-final-proj-9tyi4203z-robert-juang.vercel.app/', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
