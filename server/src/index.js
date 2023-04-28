@@ -1,8 +1,8 @@
-const stockFiles = require('../../stocks.js');
+const stockFiles = require('./stocks.js');
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const db = require("../../db.js"); 
+const db = require("./db.js"); 
 const bodyParser = require("body-parser")
 const bcrypt = require( 'bcryptjs')
 const sanitize = require( 'mongo-sanitize')
@@ -16,7 +16,7 @@ const localStrategy = require( "passport-local");
 const app = express(); 
 
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin:'https://robert-jiang-final-proj-dstyn88xb-robert-juang.vercel.app/', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
