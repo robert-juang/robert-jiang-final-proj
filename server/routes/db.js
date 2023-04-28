@@ -23,7 +23,7 @@ const mongoose = require('mongoose');
 //------------------------------------------------------------------------------------
 
 try {
-    mongoose.connect('mongodb://localhost/stockData', {useNewUrlParser: true});
+    mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true});
     console.log('Successfully connected to database.');
   } catch (err) {
     console.log('ERROR: ', err);
