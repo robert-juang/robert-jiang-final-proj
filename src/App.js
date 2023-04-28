@@ -7,7 +7,6 @@ import { Register } from "./pages/Register";
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
-
 import Account from './pages/Account';
 import BuyStock from './pages/Buystock';
 import Home from './pages';
