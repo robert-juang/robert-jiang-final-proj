@@ -64,13 +64,12 @@ Here are some of the routes I'm planning to make:
 
 * (6 points) Use React 
     * use React.js as the frontend framework. Assigned 6 points based on the time required to learn it. Also planning on using rechart to potentially set up stock chart. Will update point value when I finalize what to use 
-* (1 points) Use Yahoo finance / Alpaca API for stock data 
+* (2 points) Use Alpaca API for stock data 
     * Might run into problem with data-fetching limit. Yahoo finance public API has a limit of 48,000 requests a day or 2000 requests per hour. If the user tries to overtax the simulator, it could cause the API to fail. Will update point value when I start implementing. 
-* (1 points) Use an Api for news, I'm thinking of the mediastack API using python to call it 
+* (2 points) Used ChartJS to display my data on the client side 
 
 
-8 points total out of 8 required points for now. Will likely add more later on when I have things built and planned out. 
-
+10 points out of the required 10 points. 
 
 ## [Link to Initial Main Project File](app.mjs) 
 
