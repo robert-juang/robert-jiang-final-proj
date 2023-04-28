@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import './App.css';
 import { Login } from './pages/Login'; 
 import { Register } from "./pages/Register"; 
@@ -19,78 +19,26 @@ import Simulator from './pages/Simulator';
 function App() {
 
   const [currentForm, setCurrentForm] = useState('login'); 
+  const [authenticated, setauthenticated] = useState(true); 
 
   const toggleForm = (formName) => {
     setCurrentForm(formName); 
   }
 
   return (
-    // <div className="App">
-    //   {currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm} />}
-    // </div>
     <Router>
-    <Navbar />
+    {authenticated && <Navbar />}
     <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route path='/login' element = {currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm} />} />
+        <Route exact path='/'  element = {currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm} />} />
         <Route path='/Simulator' element={<Simulator/>} />
-        <Route path='/Buystock' element={<BuyStock/>} />
+        {/* <Route path='/Buystock' element={<BuyStock/>} /> */}
         <Route path='/News' element={<News/>} />
         <Route path='/Account' element={<Account/>} />
     </Routes>
     </Router>
   ); 
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
 }
 
 export default App;
 
 
-
-
-
-
-
-// function App(){
-//   const [currentForm, setCurrentForm] = useState('login'); 
-
-//   const toggleForm = (formName) => {
-//     setCurrentForm(formName); 
-//   }
-
-//   return (
-//     // <div className="App">
-//     //   {currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm} />}
-//     // </div>
-//     <Router>
-//     <Navbar />
-//     <Routes>
-//         <Route exact path='/' element={<Home />} />
-//         <Route path='/login' element = {currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm} />} />
-//         <Route path='/Simulator' element={<Simulator/>} />
-//         <Route path='/Buystock' element={<BuyStock/>} />
-//         <Route path='/News' element={<News/>} />
-//         <Route path='/Account' element={<Account/>} />
-//     </Routes>
-//     </Router>
-//   ); 
-// }
-
-// export default App; 

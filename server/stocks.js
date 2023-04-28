@@ -1,9 +1,7 @@
-
-const db = require('./db');
 // import mongoose from ')mongoose';
+//TODO: Turn this into class 
 const Alpaca = require("@alpacahq/alpaca-trade-api");
 const dotenv = require('dotenv'); 
-// import * as dotenv from 'dotenv'; 
 
 
 module.exports = async function getStockData(ticker,startDate,endDate){
@@ -28,33 +26,6 @@ module.exports = async function getStockData(ticker,startDate,endDate){
     for await (let b of bars) { //removed await keyword 
         got.push(b);
     }
-
+    
     return got; 
 }
-
-module.exports = function checkValid(ticker){
-    // TODO: Fix the error here (OK NVM I'm just dumb use this as a cache to cache data maybe?)
-
-    // const response = fetch('./nyse-listed_json.json');
-    // const data = response.json();
-
-    fetch("./nyse-listed_json.json")
-    .then((res) => {
-        return res.json();
-    })
-    .then((data) => {
-        const upperTicker = ticker.toUpperCase();
-        
-        // Check if ticker exists in JSON file
-        for (let i = 0; i < data.length; i++) {
-            if (data[i]['ACT Symbol'] === upperTicker) {
-            return true;
-            }
-        }
-        // Ticker not found in JSON file
-        return false;
-     }
-    );
-    // Convert ticker to uppercase
-}
-

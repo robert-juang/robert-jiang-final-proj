@@ -1,24 +1,25 @@
-import React from 'react';
-  
+import React, { useState, useRef, useEffect } from 'react';
+import Axios from "axios"
 const Account = () => {
 
   // pass information from mongoose database here. We want to see if user is loggin in and 
   // retrieve the corresponding user data 
+  const [data, setData] = useState({}); 
 
-
-  // this will fetch the data we want 
-//   const data = () => {
-//     Axios({
-//         method: "GET", 
-//         withCredentials: false, 
-//         url: "http://localhost:8000/user",
-//     }).then((res) => {
-//         console.log(res); 
-//         console.log(res); 
-//     });
-// };
-
-  //TODO: make the bio of the user clickable to edit 
+  useEffect(()=>{
+    async function getData(){
+      await Axios({
+          method: "GET", 
+          withCredentials: true, 
+          url: "http://localhost:8000/user",
+      }).then((res) => {
+          setData(res.data);
+          console.log(res); 
+      });
+    }
+    getData(); 
+  },[])
+      
 
   return (
     <div class = "settings">
@@ -27,10 +28,9 @@ const Account = () => {
         <span>Account Information</span>
       </div>
       <div class = "content">
-        <span id="C1">Username: </span>
-        <span id="C1">Password:</span>
-        <span id="C1">Date Created:</span>
-        <span id="C1">Bio:</span>
+        <span id="C1">Username: {data.username}</span>
+        <span id="C1">Date Created:{data.dateCreated}</span>
+        <span id="C1">Number of Simulations Completed:{data.simulationsCompleted}</span>
       </div>
     </div>
   );

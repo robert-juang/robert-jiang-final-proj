@@ -1,3 +1,6 @@
+//TODO: NO LONGER IN USE. PORTED OVER TO SIMULATOR
+
+
 import React, { useState, useEffect } from "react";
 
 
@@ -50,8 +53,6 @@ const Search = () => {
 
   return (
     <div>
-        Stock: 
-        <input type="text" value={stock} onChange={handleStockChange} />
         Simulation Year:
         <select value={year} onChange={handleYearChange}>
             <option value="">--Select Year--</option>
@@ -77,9 +78,14 @@ const Search = () => {
             <option value="12">December</option>
         </select>
         <form onSubmit={handleSubmit}>
-        <button type="submit">Search</button>
+        <button type="submit">Simulate</button>
         </form>
-        <table class = "page-table">
+    </div>
+)};
+  
+export default Search;
+
+{/* <table class = "page-table">
         <thread>
             <tr class = "table-head"> 
                 <td> Symbol </td>
@@ -117,8 +123,4 @@ const Search = () => {
         </thread> : null}
         </table>
     </div>
-  );
-
-};
-  
-export default Search;
+  ); */}

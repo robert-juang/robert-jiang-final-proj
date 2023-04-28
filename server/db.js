@@ -42,34 +42,48 @@ try {
 
 const UserStockSchema = new mongoose.Schema({
   Symbol: {type:String, required:true},
-  Description: {type:String},
   PurchasePrice: {type:Number,required:true}, 
-  QTY: {type:Number,required:true}, 
+  PurchaseDate: {type:String}, 
+  Quantity: {type:Number,required:true}, 
   TotalValue:{type:Number, required:true},
   TotalGainLoss:{type: Number,required:true},
   TradeActions:{type:Number,required:true}
 })
 
+mongoose.model("UserStock", UserStockSchema); 
 
-  const stockLibrarySchema = new mongoose.Schema({
-    ticker: {type:String, required: true},//ticker name 
-    tickerData: {
-      timeframe: {type:String, required: true},
-      openPrice: {type:String,required:true}, 
-      closePrice: {type:String,required:true},
-      volume: {type:String,required:true}, //volume of ticker  
-      vwap: {type:String,required:true},
-    }, 
-  })
+const stockLibrarySchema = new mongoose.Schema({
+  symbol: {type:String, required: true},//ticker name 
+  year:{type:Number,required:true},
+  month: {type:Number,rqeuired:true}, 
+  data: [{
+    timeframe: {type:String, required: true},
+    openPrice: {type:String,required:true}, 
+    closePrice: {type:String,required:true},
+    volume: {type:String,required:true}, //volume of ticker  
+    vwap: {type:String,required:true},
+  }], 
+})
 
-  mongoose.model("UserStock", UserStockSchema); 
-  mongoose.model('stockLibrary',stockLibrarySchema); 
+mongoose.model('stockLibrary',stockLibrarySchema); 
 
-  const UserSchema = new mongoose.Schema({
-    username: {type: String, required: true, minLength: 3, maxLength: 20},
-    password: {type: String, required: true, minLength: 8},
-    AcctVal: {type: Number, required: true,},
-    stocksTraded: [UserStockSchema],
-  });
-  
-  mongoose.model('User', UserSchema);
+const simulationSchema = new mongoose.Schema({
+    tickerTraded: [UserStockSchema],
+    AcctVal: {type: Number, required: true},
+    startTime: {type: String, required:true}, 
+    endTime: {type: String, required:true}, 
+    TotalChange: {type: Number}, 
+})
+
+mongoose.model("simulation", simulationSchema); 
+
+const UserSchema = new mongoose.Schema({
+  username: {type: String, required: true, minLength: 3, maxLength: 20},
+  password: {type: String, required: true, minLength: 8},
+  simulationsCompleted: {type: Number, required:true},
+  dateCreated: {type: String, required: true},
+  simulations: [Object],
+});
+
+mongoose.model('User', UserSchema);
+

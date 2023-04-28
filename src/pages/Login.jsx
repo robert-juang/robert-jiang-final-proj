@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css"; 
 import Axios from "axios"
 
@@ -6,24 +7,30 @@ export const Login = (props) => {
 
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-    const [data, setData] = useState(null);
+    const [authenticated, setauthenticated] = useState(null);
+
+    const navigate = useNavigate(); 
 
     const login = () => {
+
         Axios({
             method: "POST",
+            withCredentials: true,
+            url:"http://localhost:8000/login", 
             data:{
                 username:loginUsername,
                 password:loginPassword,
             },
-            withCredentials: false,
-            url:"http://localhost:8000/login", 
-        }).then((res) => console.log(res)); 
+        }).then((res) => {
+            console.log(res.data)
+            setauthenticated(res.data); 
+        }); 
     };
 
     const getUser = () => {
         Axios({
             method: "GET", 
-            withCredentials: false, 
+            withCredentials: true, 
             url: "http://localhost:8000/user",
         }).then((res) => {
             // setData(res.data);
@@ -31,32 +38,36 @@ export const Login = (props) => {
         });
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault(); 
-    //     console.log(email);
-    //     console.log(password) 
-    // }
+    const handleRoute = () => {
+        navigate("/simulator"); 
+    }
 
     return (
         <div className="auth-form-container">
             <div>
-                <h2>Login</h2>
-                Username:<input
-                placeholder="email"
-                onChange={(e) => setLoginUsername(e.target.value)}
-                />
-                Password:<input
-                placeholder="password"
-                onChange={(e) => setLoginPassword(e.target.value)}
-                />
-                <button onClick={login}>Submit</button>
+                <h2>SimuTrade Login</h2>
+                <div class = "LoginName">
+                    Username:<input
+                    placeholder="username" type = "username"
+                    onChange={(e) => setLoginUsername(e.target.value)}
+                    />
+                    Password:<input
+                    placeholder="password" type ="password"
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                    />
+                    <button onClick={login}>Submit</button>
+                </div>
             </div>
             <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
-            <div>
+            {authenticated ? <><h2>You are logged in, {authenticated.username}. Click this button to go to the simulator: </h2>
+                <button onClick={handleRoute}>Go to Sim</button></>
+                : <h2>Not logged in</h2>}
+
+            {/* <div>
                 <h1>Get User</h1>
                 <button onClick={getUser}>Submit</button>
-                {data ? <h1>Welcome Back {data.username}</h1> : null}
-            </div>
+                {authenticated ? <h1>Welcome Back {authenticated.username}</h1> : null}
+            </div> */}
         </div>
         
         // <div className="auth-form-container">

@@ -1,11 +1,39 @@
 import React, { useState }  from "react";
 import Chart from 'chart.js/auto';
 import {Line} from 'react-chartjs-2';
+import { DataContext, Simulator } from "../../pages/Simulator";
+
+function generate(num){
+  const arr = []; 
+  for (let i = 1; i <= num; i++){
+    arr.push(i.toString()); 
+  }
+  return arr; 
+}
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 const Charts = () => {
+    const [acctval, setacctval] = useState([10]); 
+    const data = React.useContext(DataContext); 
+    const label = generate(data); 
+    // console.log(data); 
+
+    label.map((element,index) => {
+        if (index >= acctval.length){
+          setacctval(oldArray => [...oldArray, getRandomArbitrary(0,10000)]); 
+        }
+    })
+    // for (let i = 0; i < label.length; i++){
+    //     if (i >= acctval.length){
+    //       setacctval(oldArray => [...oldArray, getRandomArbitrary(0,10000)]); 
+    //     }
+    // }
 
     const state = {
-        labels: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26"],
+        labels: [...label],
         datasets: [
           {
             label: 'Price',
@@ -14,7 +42,7 @@ const Charts = () => {
             backgroundColor: 'rgba(75,192,192,1)',
             borderColor: 'rgba(0,0,0,1)',
             borderWidth: 2,
-            data: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26] //TODO: Connect the Data to data source
+            data: [...acctval] //TODO: Connect the Data to data source
           }
         ]
     }
@@ -28,7 +56,7 @@ const Charts = () => {
             options={{
               title:{
                 display:true,
-                text:'Average Rainfall per month',
+                text:'Stock traded',
                 fontSize:20
               },
               legend:{

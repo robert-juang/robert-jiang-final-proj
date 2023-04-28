@@ -9,6 +9,7 @@ display: flex;
 justify-content: space-between;
 padding: 0.2rem calc((100vw - 1000px) / 2);
 z-index: 12; 
+justify-content: flex-start;
 `;
 
 export const NavLink = styled(Link)`
@@ -16,7 +17,8 @@ color: rgb(255 255 255);;
 display: flex;
 align-items: center;
 text-decoration: none;
-padding: 4em;
+padding-left: 4em;
+padding-right: 4em;
 height: 100%;
 cursor: pointer;
 &.active {

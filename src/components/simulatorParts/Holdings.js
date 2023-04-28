@@ -1,35 +1,42 @@
 
-import React from "react";
-  
+import React, { useState, useEffect } from "react";
+import { DataContext } from "../../pages/Simulator"
+
 const Holdings = () => {
+
+  const [tradedStock, settradedStock] = useState({}); 
+  const data = React.useContext(DataContext); 
+
+  useEffect(()=>{
+    settradedStock(data); 
+  },[tradedStock,settradedStock]); 
+
+
   return (
         <div>
         <table class = "page-table">
-            <thread>
+            <thead> 
                 <tr class = "table-head"> 
-                    <td> Symbol </td>
-                    <td> Description </td>
-                    <td> Current Price </td>
-                    <td> Purchase Price </td>
-                    <td> Quantity </td>
-                    <td> Gain/Loss </td>
-                    <td> Trade Action </td>
+                    <td id = "td1"> Symbol </td>
+                    <td id = "td1"> Current Price </td>
+                    <td id = "td1"> Purchase Price </td>
+                    <td id = "td1"> Quantity </td>
+                    <td id = "td1"> Gain/Loss </td>
+                    <td id = "td1"> Trade Action </td>
                 </tr>
-            </thread>
+            </thead>
             <tbody>
-                {/* {{#each info}}
-                    <tr class="table-body">
-                        <td>{{Symbol}}</td>
-                        <td>{{Description}}</td>
-                        <td>{{CurrentPrice}}</td>
-                        <td>{{PurchasePrice}}</td>
-                        <td>{{Quantity}}</td>
-                        <td>{{GainLoss}}</td>
-                        <td>{{TradeAction}}</td>
+                {/* {data.forEach((element, index) => {
+                    return (
+                    <tr key={index}>
+                        <td>{element.stock}</td>
+                        <td>{element.action}</td>
+                        <td>{element.quantity}</td>
                     </tr>
-                {{/each}} */}
-        </tbody>
-    </table>
+                    );
+                })} */}
+            </tbody>
+        </table>
     </div>
   );
 
