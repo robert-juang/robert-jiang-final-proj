@@ -15,7 +15,7 @@ export const Login = (props) => {
 
         axios({
             method: "POST",
-            withCredentials: true,
+            withCredentials: false,
             url:"https://simutradeserver2.onrender.com/login", 
             data:{
                 username:loginUsername,

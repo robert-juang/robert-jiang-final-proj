@@ -10,7 +10,7 @@ const Account = () => {
     async function getData(){
       await axios({
           method: "GET", 
-          withCredentials: true, 
+          withCredentials: false, 
           url: "https://simutradeserver2.onrender.com/user",
       }).then((res) => {
           setData(res.data);
