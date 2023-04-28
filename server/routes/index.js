@@ -1,8 +1,8 @@
-const stockFiles = require('./stocks.js');
+const stockFiles = require('../../stocks.js');
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const db = require("./db.js"); 
+const db = require("../../db.js"); 
 const bodyParser = require("body-parser")
 const bcrypt = require( 'bcryptjs')
 const sanitize = require( 'mongo-sanitize')
@@ -43,7 +43,7 @@ app.use(session(sessionOptions));
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./passportConfig")(passport);
+require("../../passportConfig.js")(passport);
 
 // Routes
 app.post("/login", async (req, res, next) => {
