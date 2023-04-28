@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Axios from "axios"
+import axios from "axios"
 const Account = () => {
 
   // pass information from mongoose database here. We want to see if user is loggin in and 
@@ -8,7 +8,7 @@ const Account = () => {
 
   useEffect(()=>{
     async function getData(){
-      await Axios({
+      await axios({
           method: "GET", 
           withCredentials: true, 
           url: "http://localhost:8000/user",

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css"; 
-import Axios from "axios"
+import axios from "axios"
 
 export const Login = (props) => {
 
@@ -13,7 +13,7 @@ export const Login = (props) => {
 
     const login = () => {
 
-        Axios({
+        axios({
             method: "POST",
             withCredentials: true,
             url:"http://localhost:8000/login", 
@@ -28,7 +28,7 @@ export const Login = (props) => {
     };
 
     const getUser = () => {
-        Axios({
+        axios({
             method: "GET", 
             withCredentials: true, 
             url: "http://localhost:8000/user",

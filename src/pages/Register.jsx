@@ -1,5 +1,5 @@
 import React, { useState } from "react"; 
-import Axios from "axios";
+import axios from "axios";
 
 export const Register = (props) => {
     const [registerUsername, setRegisterUsername] = useState("");
@@ -8,7 +8,7 @@ export const Register = (props) => {
 
     const register = () => {
         console.log("Clicked!"); 
-        Axios({
+        axios({
             method: "POST", 
             data: {
                 username: registerUsername, 
