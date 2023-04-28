@@ -57,7 +57,7 @@ export default function Simulator() {
       let quantity = data.quantity; 
 
       //TODO: Fetch data if it already exists in database. Else go to alpaca api (can refine into one api call but I'm too lazy)
-      const check = await fetch("http://localhost:8000/checkdata", {
+      const check = await fetch("https://simutradeserver2.onrender.com/checkdata", {
         method: "POST", 
         headers: {
             'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ export default function Simulator() {
 
       //if nothing then fetch. Else use data in isValid
       if (Array.isArray(isValid) && !isValid.length){ //TODO: Not working Fix this mistake 
-        const newData = await fetch("http://localhost:8000/getData", {
+        const newData = await fetch("https://simutradeserver2.onrender.com/getData", {
             method: "POST", 
             headers: {
                 'Content-Type': 'application/json'

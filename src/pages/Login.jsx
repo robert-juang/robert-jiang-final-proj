@@ -16,7 +16,7 @@ export const Login = (props) => {
         axios({
             method: "POST",
             withCredentials: true,
-            url:"http://localhost:8000/login", 
+            url:"https://simutradeserver2.onrender.com/login", 
             data:{
                 username:loginUsername,
                 password:loginPassword,
@@ -31,7 +31,7 @@ export const Login = (props) => {
         axios({
             method: "GET", 
             withCredentials: true, 
-            url: "http://localhost:8000/user",
+            url: "https://simutradeserver2.onrender.com/user",
         }).then((res) => {
             // setData(res.data);
             console.log(res.data); 

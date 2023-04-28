@@ -11,7 +11,7 @@ const Account = () => {
       await axios({
           method: "GET", 
           withCredentials: true, 
-          url: "http://localhost:8000/user",
+          url: "https://simutradeserver2.onrender.com/user",
       }).then((res) => {
           setData(res.data);
           console.log(res); 

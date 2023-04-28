@@ -36,7 +36,7 @@ const Search = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(); 
 
-        const result = await fetch("http://localhost:8000/getData", {
+        const result = await fetch("https://simutradeserver2.onrender.com/getData", {
             method: "POST", 
             headers: {
                 'Content-Type': 'application/json'

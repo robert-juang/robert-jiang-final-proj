@@ -15,7 +15,7 @@ export const Register = (props) => {
                 password: registerPassword,
             }, 
             withCredentials: false, 
-            url: "http://localhost:8000/register",
+            url: "https://simutradeserver2.onrender.com/register",
         }).then((res) => {console.log(res);setData(res.data)}); 
     }; 
 
