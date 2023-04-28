@@ -43,7 +43,7 @@ app.use(session(sessionOptions));
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-require("../../passportConfig.js")(passport);
+require("./passportConfig.js")(passport);
 
 // Routes
 app.post("/login", async (req, res, next) => {

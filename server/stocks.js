@@ -5,6 +5,9 @@ const dotenv = require('dotenv');
 
 
 module.exports = async function getStockData(ticker,startDate,endDate){
+
+    dotenv.config(); 
+
     const API_KEY = process.env.ALPACA_KEY;
     const API_SECRET = process.env.ALPACA_SECRET;
 
