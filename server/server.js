@@ -15,11 +15,11 @@ const cookieParser = require( "cookie-parser")
 const localStrategy = require( "passport-local");
 const app = express(); 
 
-const corsOptions ={
-  origin:'https://robert-jiang-final-proj-9tyi4203z-robert-juang.vercel.app/', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
+// const corsOptions ={
+//   origin:'https://robert-jiang-final-proj-9tyi4203z-robert-juang.vercel.app', 
+//   credentials:true,            //access-control-allow-credentials:true
+//   optionSuccessStatus:200
+// }
 
 const sessionOptions = {
   secret: "secretcode",
@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(session(sessionOptions));
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
