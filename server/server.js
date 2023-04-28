@@ -108,7 +108,7 @@ app.get("/user", (req, res) => {
 });
 
 app.get('/', (req,res) => {
-    res.json({message: "Hello from server!"}); 
+    res.send("Hello from server!"); 
 })
 
 app.post('/getData', async (req,res) => {
